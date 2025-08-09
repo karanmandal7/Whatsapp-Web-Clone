@@ -1,0 +1,10 @@
+{
+  "name": "WhatsApp Clone",
+  "short_name": "WhatsApp",
+  "description": "A WhatsApp Web clone for processing webhook data",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#22c55e",
+  "icons": []
+} 

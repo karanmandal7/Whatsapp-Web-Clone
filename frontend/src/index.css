@@ -1,0 +1,266 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS for WhatsApp Web clone */
+
+@layer base {
+  html, body {
+    @apply h-full m-0 p-0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    @apply box-border;
+  }
+}
+
+@layer components {
+  /* Message bubble animations */
+  .message-bubble-enter {
+    @apply opacity-0 transform translate-y-2;
+    animation: messageEnter 0.3s ease-out forwards;
+  }
+
+  @keyframes messageEnter {
+    to {
+      @apply opacity-100 transform translate-y-0;
+    }
+  }
+
+  /* Typing indicator */
+  .typing-indicator {
+    @apply flex space-x-1;
+  }
+
+  .typing-dot {
+    @apply w-2 h-2 bg-[#8696a0] rounded-full;
+    animation: typingPulse 1.5s ease-in-out infinite;
+  }
+
+  .typing-dot:nth-child(1) {
+    animation-delay: 0ms;
+  }
+
+  .typing-dot:nth-child(2) {
+    animation-delay: 150ms;
+  }
+
+  .typing-dot:nth-child(3) {
+    animation-delay: 300ms;
+  }
+
+  @keyframes typingPulse {
+    0%, 60%, 100% {
+      @apply opacity-40 transform scale-100;
+    }
+    30% {
+      @apply opacity-100 transform scale-110;
+    }
+  }
+
+  /* Custom scrollbar styles */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #374045 transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    @apply w-1.5;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-[#374045] rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-[#8696a0];
+  }
+
+  /* Message status icons */
+  .status-icon {
+    @apply inline-block w-4 h-4 transition-colors duration-200;
+  }
+
+  .status-sent {
+    @apply text-[#8696a0];
+  }
+
+  .status-delivered {
+    @apply text-[#8696a0];
+  }
+
+  .status-read {
+    @apply text-[#53bdeb];
+  }
+
+  /* Conversation list item hover effect */
+  .conversation-item {
+    @apply transition-colors duration-150 ease-in-out;
+  }
+
+  .conversation-item:hover {
+    @apply bg-[#2a3942];
+  }
+
+  .conversation-item.active {
+    @apply bg-[#2a3942];
+  }
+
+  /* Online status indicator */
+  .online-indicator {
+    @apply absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-[#00a884] border-2 border-[#202c33] rounded-full;
+  }
+
+  /* Responsive design utilities */
+  .mobile-only {
+    @apply block md:hidden;
+  }
+
+  .desktop-only {
+    @apply hidden md:block;
+  }
+
+  /* Loading animation for messages */
+  .message-loading {
+    @apply bg-[#2a3942] animate-pulse;
+  }
+
+  /* Custom focus styles */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-[#00a884] focus:ring-offset-2;
+  }
+
+  /* Unread message count badge */
+  .unread-badge {
+    @apply bg-[#00a884] text-white text-xs rounded-full px-2 py-1 min-w-5 text-center font-medium;
+  }
+
+  /* Message timestamp */
+  .message-time {
+    @apply text-xs opacity-70 select-none;
+  }
+
+  /* Button variants */
+  .btn-primary {
+    @apply bg-[#00a884] text-white px-4 py-2 rounded-lg hover:bg-[#008f72];
+    @apply focus:outline-none focus:ring-2 focus:ring-[#00a884] focus:ring-offset-2;
+    @apply disabled:bg-[#374045] disabled:cursor-not-allowed;
+    @apply transition-colors duration-200 ease-in-out;
+  }
+
+  .btn-secondary {
+    @apply bg-[#2a3942] text-[#8696a0] px-4 py-2 rounded-lg hover:bg-[#374045];
+    @apply focus:outline-none focus:ring-2 focus:ring-[#374045] focus:ring-offset-2;
+    @apply transition-colors duration-200 ease-in-out;
+  }
+}
+
+@layer utilities {
+  /* Text truncation utilities */
+  .truncate-2-lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .truncate-3-lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-bounce-in {
+    animation: bounceIn 0.6s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { @apply opacity-0; }
+    to { @apply opacity-100; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      @apply opacity-0 transform translate-y-4; 
+    }
+    to { 
+      @apply opacity-100 transform translate-y-0; 
+    }
+  }
+
+  @keyframes slideDown {
+    from { 
+      @apply opacity-0 transform -translate-y-4; 
+    }
+    to { 
+      @apply opacity-100 transform translate-y-0; 
+    }
+  }
+
+  @keyframes bounceIn {
+    0% {
+      @apply opacity-0 transform scale-75;
+    }
+    50% {
+      @apply transform scale-110;
+    }
+    100% {
+      @apply opacity-100 transform scale-100;
+    }
+  }
+}
+
+/* Dark mode support (for future implementation) */
+@media (prefers-color-scheme: dark) {
+  .dark-mode {
+    @apply bg-[#0b141a] text-white;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    @apply hidden;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .message-incoming {
+    @apply border-2 border-[#8696a0];
+  }
+  
+  .message-outgoing {
+    @apply border-2 border-[#00a884];
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
